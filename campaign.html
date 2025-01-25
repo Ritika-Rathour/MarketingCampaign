@@ -1,119 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time Stock Market Analysis</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .stock {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            margin: 10px 0;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-        .stock.green {
-            border-left: 5px solid #4caf50;
-        }
-        .stock.red {
-            border-left: 5px solid #f44336;
-        }
-        #stock-input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        #fetch-button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #fetch-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Marketing Campaign Manager</title>
+  <link rel="stylesheet" href="Digital.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Real-Time Stock Market Analysis</h1>
-        <input type="text" id="stock-input" placeholder="Enter Stock Symbol (e.g., AAPL, TSLA)">
-        <button id="fetch-button">Fetch Stock Data</button>
-        <div id="stock-data"></div>
-    </div>
-
-    <script>
-        document.getElementById('fetch-button').addEventListener('click', () => {
-            const symbol = document.getElementById('stock-input').value.trim();
-            if (!symbol) {
-                alert('Please enter a stock symbol.');
-                return;
-            }
-
-            const apiKey = 'YOUR_API_KEY'; // Replace with your API key
-            const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=${apiKey}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const stockData = data['Global Quote'];
-                    if (!stockData) {
-                        alert('Invalid stock symbol or no data available.');
-                        return;
-                    }
-
-                    const { 
-                        '01. symbol': stockSymbol, 
-                        '05. price': price, 
-                        '09. change': change, 
-                        '10. change percent': changePercent 
-                    } = stockData;
-
-                    const stockDiv = document.createElement('div');
-                    stockDiv.className = `stock ${parseFloat(change) >= 0 ? 'green' : 'red'}`;
-                    stockDiv.innerHTML = `
-                        <span><strong>${stockSymbol}</strong></span>
-                        <span>Price: $${parseFloat(price).toFixed(2)}</span>
-                        <span>${change} (${changePercent})</span>
-                    `;
-
-                    const stockDataContainer = document.getElementById('stock-data');
-                    stockDataContainer.innerHTML = '';
-                    stockDataContainer.appendChild(stockDiv);
-                })
-                .catch(error => {
-                    console.error('Error fetching stock data:', error);
-                    alert('Failed to fetch stock data. Please try again later.');
-                });
-        });
-    </script>
+  <div class="container">
+    <header>
+      <h1>Digital Marketing Campaign Manager</h1>
+    </header>
+    <section class="form-section">
+      <h2>Add a New Campaign</h2>
+      <form id="campaignForm">
+        <div class="form-group">
+          <label for="campaignName">Campaign Name</label>
+          <input type="text" id="campaignName" name="campaignName" required>
+        </div>
+        <div class="form-group">
+          <label for="startDate">Start Date</label>
+          <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date</label>
+          <input type="date" id="endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+          <label for="budget">Budget ($)</label>
+          <input type="number" id="budget" name="budget" required>
+        </div>
+        <button type="submit">Add Campaign</button>
+      </form>
+    </section>
+    <section class="campaign-list">
+      <h2>Active Campaigns</h2>
+      <table id="campaignTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Budget ($)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Campaign rows will be added here -->
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <script src="Digital.js"></script>
 </body>
 </html>
