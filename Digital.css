@@ -1,0 +1,92 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+   header h1 {
+    font-size: 2rem;
+    color: #4CAF50;
+  } 
+  h2 {
+    color: #333;
+    margin-bottom: 10px;
+  } 
+  /* Form styles */
+  .form-section {
+    margin-bottom: 30px;
+  } 
+  .form-group {
+    margin-bottom: 15px;
+  } 
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  } 
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  } 
+  /* Table styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }  
+  thead {
+    background-color: #4CAF50;
+    color: white;
+  } 
+  th, td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+  } 
+  tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  .actions button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+  } 
+  .actions button:hover {
+    background-color: #e53935;
+  }
+  
